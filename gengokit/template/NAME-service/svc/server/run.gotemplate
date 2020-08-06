@@ -173,7 +173,7 @@ func Run(cfg worldserver.Config) {
 
 	// gRPC transport.
 	go func() {
-	    logs.Infow("begin grpc server", "transport", "gRPC", "address", cfg.GrpcAddr)
+	    logs.Info("begin grpc server", "transport", "gRPC", "address", cfg.GrpcAddr)
 		ln, err := net.Listen("tcp", cfg.GrpcAddr)
 		if err != nil {
 			errc <- err
