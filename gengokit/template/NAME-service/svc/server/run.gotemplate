@@ -181,7 +181,8 @@ func Run(cfg worldserver.Config) {
 		}
 
 		srv := svc.MakeGRPCServer(endpoints, tracer, logger)
-		s := grpc.NewServer(grpc.UnaryInterceptor(unaryServerFilter))
+		// s := grpc.NewServer(grpc.UnaryInterceptor(unaryServerFilter))
+		s := grpc.NewServer()
 		pb.Register{{.Service.Name}}Server(s, srv)
 
 		errc <- s.Serve(ln)
